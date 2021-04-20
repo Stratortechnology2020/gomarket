@@ -4,9 +4,10 @@
             <div class="row">
                 <aside class="col-md-4">
                     <article class="mr-3">
-                        <img src="{{ url('images/logo.png') }}" class="logo-footer">
+                        <!-- <img src="{{ url('images/logo.png') }}" class="logo-footer"> -->
+                        <h4>Gomarket</h4>
                         <p class="mt-3">
-                            Food Express is the best online food order management system.
+                            Gomarkets is the best online food order management system.
                         </p>
                         <div>
                                                                                                                                         </div>

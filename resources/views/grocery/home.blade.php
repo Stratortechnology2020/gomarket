@@ -35,8 +35,181 @@
         <link href="{{ url('frontend/plugins/slickslider/slick.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('frontend/plugins/slickslider/slick-theme.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
 </head>
+<style type="text/css"> 
+     
+ div {
+     display: block;
+     position: relative;
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box
+ }
 
+ .bbb_viewed {
+     padding-top: 51px;
+     padding-bottom: 60px;
+     background: #eff6fa
+ }
+
+ .bbb_main_container {
+     background-color: #fff;
+     padding: 11px
+ }
+
+ .bbb_viewed_title_container {
+     border-bottom: solid 1px #dadada
+ }
+
+ .bbb_viewed_title {
+     margin-bottom: 16px;
+     margin-top: 8px
+ }
+
+ .bbb_viewed_nav_container {
+     position: absolute;
+     right: -5px;
+     bottom: 14px
+ }
+
+ .bbb_viewed_nav {
+     display: inline-block;
+     cursor: pointer
+ }
+
+ .bbb_viewed_nav i {
+     color: #dadada;
+     font-size: 18px;
+     padding: 5px;
+     -webkit-transition: all 200ms ease;
+     -moz-transition: all 200ms ease;
+     -ms-transition: all 200ms ease;
+     -o-transition: all 200ms ease;
+     transition: all 200ms ease
+ }
+
+ .bbb_viewed_nav:hover i {
+     color: #606264
+ }
+
+ .bbb_viewed_prev {
+     margin-right: 15px
+ }
+
+ .bbb_viewed_slider_container {
+     padding-top: 13px
+ }
+
+ .bbb_viewed_item {
+     width: 100%;
+     background: #FFFFFF;
+     border-radius: 2px;
+     padding-top: 25px;
+     padding-bottom: 25px;
+     padding-left: 30px;
+     padding-right: 30px
+ }
+
+ .bbb_viewed_image {
+     width: 150px;
+     height: 150px
+ }
+
+ .bbb_viewed_image img {
+     display: block;
+     max-width: 100%
+ }
+
+ .bbb_viewed_content {
+     width: 100%;
+     margin-top: 25px
+ }
+
+ .bbb_viewed_price {
+     font-size: 16px;
+     color: #000000;
+     font-weight: 500
+ }
+
+ .bbb_viewed_item.discount .bbb_viewed_price {
+     color: #df3b3b
+ }
+
+ .bbb_viewed_price span {
+     position: relative;
+     font-size: 12px;
+     font-weight: 400;
+     color: rgba(0, 0, 0, 0.6);
+     margin-left: 8px
+ }
+
+ .bbb_viewed_price span::after {
+     display: block;
+     position: absolute;
+     top: 6px;
+     left: -2px;
+     width: calc(100% + 4px);
+     height: 1px;
+     background: #8d8d8d;
+     content: ''
+ }
+
+ .bbb_viewed_name {
+     margin-top: 3px
+ }
+
+ .bbb_viewed_name a {
+     font-size: 14px;
+     color: #000000;
+     -webkit-transition: all 200ms ease;
+     -moz-transition: all 200ms ease;
+     -ms-transition: all 200ms ease;
+     -o-transition: all 200ms ease;
+     transition: all 200ms ease
+ }
+
+ .bbb_viewed_name a:hover {
+     color: #0e8ce4
+ }
+
+ .item_marks {
+     position: absolute;
+     top: 18px;
+     left: 18px
+ }
+
+ .item_mark {
+     display: none;
+     width: 36px;
+     height: 36px;
+     border-radius: 50%;
+     color: #FFFFFF;
+     font-size: 10px;
+     font-weight: 500;
+     line-height: 36px;
+     text-align: center
+ }
+
+ .item_discount {
+     background: #df3b3b;
+     margin-right: 5px
+ }
+
+ .item_new {
+     background: #0e8ce4
+ }
+
+ .bbb_viewed_item.discount .item_discount {
+     display: inline-block
+ }
+
+ .bbb_viewed_item.is_new .item_new {
+     display: inline-block
+ }
+</style>
 <body>
     @include("grocery.header")
     
@@ -114,7 +287,7 @@
         <div class="row">
             <?php foreach($vendordata as $vendordata){ ?>
                 <div class="col-md-4" style="max-width: 24.333333%;">
-                        <a href="shop/grocery-shop-bangladesh.html" class="card card-product-grid card-padding-css">
+                        <a href="{{ route('grocerystore')}}" class="card card-product-grid card-padding-css">
                             <div class="img-wrap home">
                                 <img src="{{ $vendordata->category_image }}">
                             </div>
@@ -131,65 +304,36 @@
 <section class="section-content">
     <div class="container">
         <header class="section-heading">
-            <h3 class="section-title">Best Selling Categories</h3>
+            <h3 class="section-title">Best Grocery Products</h3>
         </header>
         <div class="row">
-                            <div class="col-md-3 width-resize">
-                    <a href="search.html"
-                        class="card card-product-grid card-padding-css">
-                        <div class="img-wrap home">
-                            <img src="{{ url('images/category1.jpg') }}">
+                <div class="col">
+                    <div class="bbb_main_container">
+                    <div class="bbb_viewed_title_container">
+                        <div class="bbb_viewed_nav_container">
+                            <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fa fa-arrow-left"></i></div>
+                            <div class="bbb_viewed_nav bbb_viewed_next"><i class="fa fa-arrow-right"></i></div>
                         </div>
-                        <div class="info-wrap text-center ">
-                            <p class="title text-truncate">Butcher</p>
-                        </div>
-                    </a> <!-- card // -->
-                </div>
-                            <div class="col-md-3 width-resize">
-                    <a href="search.html"
-                        class="card card-product-grid card-padding-css">
-                        <div class="img-wrap home">
-                            <img src="{{ url('images/category2.jpg') }}">
-                        </div>
-                        <div class="info-wrap text-center ">
-                            <p class="title text-truncate">Fruit Foods</p>
-                        </div>
-                    </a> <!-- card // -->
-                </div>
-                            <div class="col-md-3 width-resize">
-                    <a href="search.html"
-                        class="card card-product-grid card-padding-css">
-                        <div class="img-wrap home">
-                           <img src="{{ url('images/category3.jpg') }}">
-                        </div>
-                        <div class="info-wrap text-center ">
-                            <p class="title text-truncate">Camera</p>
-                        </div>
-                    </a> <!-- card // -->
-                </div>
-                            <div class="col-md-3 width-resize">
-                    <a href="search.html"
-                        class="card card-product-grid card-padding-css">
-                        <div class="img-wrap home">
-                            <img src="{{ url('images/category4.jpg') }}">
-                        </div>
-                        <div class="info-wrap text-center ">
-                            <p class="title text-truncate">Headphone</p>
-                        </div>
-                    </a> <!-- card // -->
-                </div>
-                            <div class="col-md-3 width-resize">
-                    <a href="search.html"
-                        class="card card-product-grid card-padding-css">
-                        <div class="img-wrap home">
-                            <img src="{{ url('images/category5.png') }}">
-                        </div>
-                        <div class="info-wrap text-center ">
-                            <p class="title text-truncate">Laptop</p>
-                        </div>
-                    </a> <!-- card // -->
-                </div>
                     </div>
+                    <div class="bbb_viewed_slider_container">
+                        <div class="owl-carousel owl-theme bbb_viewed_slider">
+                            @foreach($products as $productsval)
+                            <div class="owl-item">
+                                <div class="bbb_viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                    <div class="bbb_viewed_image"><a href="{{ route('product_detail',$productsval->product_id) }}"><img src="{{$productsval->varient_image}}" alt=""></a></div>
+                                    <div class="bbb_viewed_content text-center">
+                                        <div class="bbb_viewed_price">₹{{$productsval->price}}<span>₹{{$productsval->strick_price}}</span></div>
+                                        <div class="bbb_viewed_name"><a href="#">{{$productsval->product_name}}</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -780,6 +924,66 @@
 <script type="text/javascript">
     
     </script>
+    <script>
+   $(document).ready(function(){
+    
+       $('.ndiv99').hover(function(){     
+           $('.mdiv00').toggle();    
+         
+       });
+     
+   });
+</script>
+<script type="text/javascript">
+  
+$(document).ready(function()
+{
+
+
+if($('.bbb_viewed_slider').length)
+{
+var viewedSlider = $('.bbb_viewed_slider');
+
+viewedSlider.owlCarousel(
+{
+loop:true,
+margin:30,
+autoplay:true,
+autoplayTimeout:6000,
+nav:false,
+dots:false,
+responsive:
+{
+0:{items:1},
+575:{items:2},
+768:{items:3},
+991:{items:4},
+1199:{items:6}
+}
+});
+
+if($('.bbb_viewed_prev').length)
+{
+var prev = $('.bbb_viewed_prev');
+prev.on('click', function()
+{
+viewedSlider.trigger('prev.owl.carousel');
+});
+}
+
+if($('.bbb_viewed_next').length)
+{
+var next = $('.bbb_viewed_next');
+next.on('click', function()
+{
+viewedSlider.trigger('next.owl.carousel');
+});
+}
+}
+
+
+});
+</script>
 
     </body>
 

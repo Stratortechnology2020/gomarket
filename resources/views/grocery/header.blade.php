@@ -23,9 +23,9 @@
             <div class="container">
                 <ul class="navbar-nav">
                     <li  class="nav-item-a"><a href="#" class="nav-link"><i class="fa fa-phone">
-                                </i> +8801777664206 </a>
+                                </i> +91 7845129663 </a>
                     </li>
-                    <li  class="nav-item-a"><a href="#" class="nav-link"><i class="fa fa-envelope"> </i> info@food-express.xyz </a>
+                    <li  class="nav-item-a"><a href="#" class="nav-link"><i class="fa fa-envelope"> </i> info@gomarket.com </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ">
@@ -40,8 +40,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-2 col-6">
-                    <a href="index.html" class="brand-wrap">
-                        <img class="logo" src="{{ url('images/logo.png') }}" alt="logo">
+                    <a href="{{route('home')}}" class="brand-wrap">
+                        <!-- //<img class="logo" src="{{ url('images/logo.png') }}" alt="logo"> -->
+                         <h4>Gomarket</h4>
                     </a>
                 </div>
             <div class="col-lg-6 col-12 col-sm-12">
@@ -78,7 +79,7 @@
             <div class="col-md">
                 <div class="widgets-wrap float-md-right">
                     <div class="widget-header  mr-3">
-                        <a href="cart" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
+                        <a href="{{ route('cart') }}" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
                         <span class="badge badge-pill badge-danger notify">0</span>
                     </div>
                     <div class="widget-header icontext">
@@ -89,6 +90,7 @@
                                     <div class="dropdown">
                                         <i class="fa fa-user-circle">  {{session('name')}} </i>
                                         <div class="dropdown-content">
+                                            <a href="{{ route('myaddress')}}"><i class="fa fa-users"></i> My Address </a><br><br>
                                         <a href="{{ route('logout')}}"><i class="fa fa-caret-square-o-right"></i> Logout </a>
                                     </div>
                                     </div>
